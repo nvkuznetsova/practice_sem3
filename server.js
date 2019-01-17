@@ -15,7 +15,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app
     .use(cors({
-      origin: 'https://dashboard.heroku.com/apps/young-mountain-79735'
+      origin: 'https://young-mountain-79735.herokuapp.com',
+      credentials: true
     }))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
