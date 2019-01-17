@@ -6,6 +6,8 @@ const cors = require('cors');
 const router = require('./routes/list');
 const PORT = process.env.port || 7777;
 const app = express();
+const protocol = 'http://' || 'https://';
+const URL = 'young-mountain-79735.herokuapp.com/';
 
 const dbURL = 'mongodb://dbuser:gollum123@ds255754.mlab.com:55754/todoapp';
 mongoose.connect(dbURL, { useNewUrlParser: true });
@@ -15,7 +17,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app
     .use(cors({
-      origin: 'http://localhost:3000',
+      origin: `${protocol}${URL}:3000`,
       credentials: true
     }))
     .set('views', path.join(__dirname, 'views'))
