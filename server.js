@@ -15,7 +15,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app
     .use(cors({
-      origin: 'http://localhost:3000',
+      origin: 'https://localhost:3000',
       credentials: true
     }))
     .set('views', path.join(__dirname, 'views'))
