@@ -10,7 +10,9 @@
   "scripts": {
     "client": "yarn --cwd client start",
     "server": "nodemon server.js",
-    "app": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "app": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "yarn --cwd client install",
+    "start": "concurrently --kill-others-on-fail \"yarn heroku-postbuild\" \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "body-parser": "^1.18.3",
