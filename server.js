@@ -15,13 +15,13 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app
     .use(cors({
-      origin: 'https://young-mountain-79735.herokuapp.com',
+      origin: 'http://localhost:3000',
       credentials: true
     }))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .engine('html', require('ejs').renderFile)
-    .use(express.static(path.join(__dirname, './client/build')))
+    .use(express.static(path.join(__dirname, './client')))
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended: false}))
     .use('/api/tasks', router)
