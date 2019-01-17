@@ -1,5 +1,5 @@
 import axios from 'axios';
-const protocol = 'http://' || 'https://';
+const protocol = 'https://';
 const URL = window.location.hostname;
 const proxy = `${protocol}${URL}:7777/api/tasks`;
 

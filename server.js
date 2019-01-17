@@ -6,7 +6,7 @@ const cors = require('cors');
 const router = require('./routes/list');
 const PORT = process.env.port || 7777;
 const app = express();
-const protocol = 'http://' || 'https://';
+const protocol = 'https://';
 const URL = 'young-mountain-79735.herokuapp.com/' || 'localhost';
 
 const dbURL = 'mongodb://dbuser:gollum123@ds255754.mlab.com:55754/todoapp';
@@ -23,7 +23,7 @@ app
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .engine('html', require('ejs').renderFile)
-    .use(express.static(path.join(__dirname, './client')))
+    .use(express.static(path.join(__dirname, './client/build')))
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended: false}))
     .use('/api/tasks', router)
