@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const router = require('./routes/list');
-const PORT = process.env.port || 7777;
+const port = process.env.PORT || 7777;
 const app = express();
 
 const dbURL = 'mongodb://dbuser:gollum123@ds255754.mlab.com:55754/todoapp';
@@ -24,4 +24,4 @@ app
       r.res.sendFile(path.join(__dirname+'/client/build/index.html'));
   })
 
-    .listen(PORT, () => console.log(`Listening on port ${PORT}`))
+    .listen(port, () => console.log(`Listening on port ${port}`))
