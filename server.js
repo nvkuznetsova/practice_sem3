@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
-const cors = require('cors');
 const router = require('./routes/list');
 const PORT = process.env.port || 7777;
 const app = express();
@@ -14,16 +13,15 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app
-    .use(cors({
-      origin: 'https://localhost:3000',
-      credentials: true
-    }))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .engine('html', require('ejs').renderFile)
-    .use(express.static(path.join(__dirname, './client')))
+    .use(express.static(path.join(__dirname, './client/build')))
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended: false}))
     .use('/api/tasks', router)
+    .use('*', r =>{
+      r.res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  })
 
     .listen(PORT, () => console.log(`Listening on port ${PORT}`))

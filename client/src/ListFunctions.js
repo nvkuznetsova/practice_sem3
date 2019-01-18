@@ -1,7 +1,5 @@
 import axios from 'axios';
-const protocol = 'https://';
-const URL = window.location.hostname;
-const proxy = `${protocol}${URL}:7777/api/tasks`;
+const proxy = '/api/tasks';
 
 //All Tasks
 export const getAllTasks = () => {
